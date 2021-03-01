@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "45c4ae28-a686-455b-be31-0847805f40f4",
+		"name": "Labforward Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "findItemsByCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/itemsByCategory/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"itemsByCategory",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCategory",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Chemicals\",\n    \"attributes\":[\n        {\"name\": \"volume\"}, {\"name\":\"humidity\"}\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/createCategory",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCategory"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Chemicals",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createItem",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"SampleChemical\",\n    \"category\":{\"id\": 1},\n    \"attributeValues\" : [\n        {\"attribute\" : {\"id\" : 2}, \"value\":\"123\"},\n        {\"attribute\" : {\"id\" : 3}, \"value\":\"456\"}\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/createItem",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateItem",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":4,\n    \"name\":\"SampleChemicalUpdated\",\n    \"category\":{\"id\": 1},\n    \"attributeValues\" : [\n        {\"id\":5, \"attribute\" : {\"id\" : 2}, \"value\":\"1234\"},\n        {\"id\":6, \"attribute\" : {\"id\" : 3}, \"value\":\"4567\"}\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/updateItem/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateItem",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
