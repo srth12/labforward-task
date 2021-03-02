@@ -12,11 +12,11 @@ public class AttributeValueModel {
 
     private String value;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="attribute_id")
     private AttributeModel attribute;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="item_id")
     private ItemModel item;
 

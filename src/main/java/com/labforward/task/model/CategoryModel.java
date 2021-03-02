@@ -16,7 +16,7 @@ public class CategoryModel {
     @OneToMany(mappedBy="category", cascade={CascadeType.ALL})
     private List<AttributeModel> attributes;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<ItemModel> items;
 
     public CategoryModel(){}

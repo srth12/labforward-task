@@ -13,11 +13,11 @@ public class ItemModel {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="category_id")
     private CategoryModel category;
 
-    @OneToMany(mappedBy="item", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="item", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<AttributeValueModel> attributeValues;
 
     public ItemModel() {}
