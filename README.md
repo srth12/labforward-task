@@ -1,7 +1,7 @@
 # labforward-task
 
 The project is created using SpringBoot. Spring Web is used as the main framework. Spring Data JPA is used for accessing and manipulating the database.
-And H2 database is used for persistence.
+And H2 database is used for storage.
 
 The project is structured regarding a simple Controller <-> Service <-> Repository architecture.
 Dto objects are used for consuming data from the controllers. These dtos are converted to database model objects in the service layer.
@@ -25,10 +25,13 @@ There are 4 endpoints corresponding to the requirements of the task. These are :
 /updateItem<br>
 /itemsByCategory/{categoryId}
 
-Category creation is straightforward. Category name and attributes belonging to that category is given as input. <br>
+Category creation is straightforward. Category name and attributes belonging to that category are given as input. <br>
 When creating an item, it is assumed that there is a UI and the category id and related attribute ids are given correctly. <br>
 When updating an item, it is also assumed that the category id, related attribute ids and attribute_value_ids(previously saved attribute values) are provided correctly via a UI. <br>
 When querying for items belonging to a category, if the provided category does not exist in the database, an exception is thrown and a String message is returned to user. <br>
+
+Integrity checks are performed during updateItem and createItem requests. If an attribute does not belong to the given category, an error message
+is returned. Also, if more than one attribute with the same id is given as input, an error message is returned too.
 
 You can start the application by right-clicking TaskApplication and select Run from your IDE. You can also launch the application by
 running <i>./mvnw clean spring-boot:run</i> or <i>mvn clean spring-boot:run</i> within the path of the project. <br>

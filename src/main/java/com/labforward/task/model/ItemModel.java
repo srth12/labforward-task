@@ -17,7 +17,7 @@ public class ItemModel {
     @JoinColumn(name="category_id")
     private CategoryModel category;
 
-    @OneToMany(mappedBy="item", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="item", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<AttributeValueModel> attributeValues;
 
     public ItemModel() {}

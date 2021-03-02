@@ -2,8 +2,11 @@ package com.labforward.task.controller;
 
 import com.labforward.task.dto.CategoryDto;
 import com.labforward.task.dto.ItemDto;
+import com.labforward.task.dto.ResponseObject;
 import com.labforward.task.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,22 +18,22 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @PostMapping("/createCategory")
-    public Long createCategory(@RequestBody CategoryDto categoryDto) {
-        return categoryService.createCategory(categoryDto);
+    public ResponseEntity<ResponseObject> createCategory(@RequestBody CategoryDto categoryDto) {
+        return new ResponseEntity<ResponseObject>(new ResponseObject("Sucessful",200,categoryService.createCategory(categoryDto)), HttpStatus.OK);
     }
 
     @PostMapping("/createItem")
-    public Long createItem(@RequestBody ItemDto itemDto) {
-        return categoryService.createItem(itemDto);
+    public ResponseEntity<ResponseObject> createItem(@RequestBody ItemDto itemDto) {
+        return new ResponseEntity<ResponseObject>(new ResponseObject("Sucessful",200,categoryService.createItem(itemDto)), HttpStatus.OK);
     }
 
     @PutMapping("/updateItem")
-    public Long updateItem(@RequestBody ItemDto itemDto) {
-        return categoryService.updateItem(itemDto);
+    public ResponseEntity<ResponseObject> updateItem(@RequestBody ItemDto itemDto) {
+        return new ResponseEntity<ResponseObject>(new ResponseObject("Sucessful",200,categoryService.updateItem(itemDto)), HttpStatus.OK);
     }
 
     @GetMapping("/itemsByCategory/{categoryId}")
-    public List<ItemDto> findItemsByCategory(@PathVariable Long categoryId) {
-        return categoryService.findItemsByCategory(categoryId);
+    public ResponseEntity<ResponseObject> findItemsByCategory(@PathVariable Long categoryId) {
+        return new ResponseEntity<ResponseObject>(new ResponseObject("Sucessful",200,categoryService.findItemsByCategory(categoryId)), HttpStatus.OK);
     }
 }
